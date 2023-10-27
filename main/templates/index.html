@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="container py-4">
+    <h1>Lista de Alunos</h1>
+    <a href="{% url 'aluno_new' %}" class="btn btn-success green">Novo Cadastro</a>
+    <table class="table">
+        <thead>
+            <th scope="col">Nome</th>
+            <th scope="col">Idade</th>
+            <th scope="col">Email</th>
+            <th scope="col">Cidade</th>
+            <th scope="col">Curso</th>
+            <th scope="col">Ações</th>
+        </thead>
+        <tbody>
+            {% for aluno in alunos %}
+                <tr>
+                    <td>
+                        <a href="{% url 'aluno_details' aluno.id %}">{{ aluno.nome }}</a>
+                    </td>
+                    <td>{{ aluno.idade }}</td>
+                    <td>{{ aluno.email }}</td>
+                    <td>{{ aluno.cidade.nome }}</td>
+                    <td>{{ aluno.curso.nome }}</td>
+                    <td>
+                        <a href="{% url 'aluno_edit' aluno.id %}" class="btn btn-primary">Editar</a>
+                        <a href="{% url 'aluno_delete' aluno.id %}" class="btn btn-danger">Excluir</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</main>
+{% endblock content %}

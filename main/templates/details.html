@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="container">
+    <a href="{% url 'index' %}">Pagina Inicial</a>
+    <h1>Detalhes do Aluno</h1>
+    <p><strong>Nome:</strong> {{ aluno.nome }}</p>
+    <p><strong>Endereço:</strong> {{ aluno.endereco }}</p>
+    <p><strong>Data de Nascimento:</strong> {{ aluno.data_de_nascimento }}</p>
+    <p><strong>Curso:</strong> {{ aluno.curso }}</p>
+    <p><strong>Cidade:</strong> {{ aluno.cidade }}</p>
+    <p><strong>Email:</strong> {{ aluno.email }}</p>
+
+    <div class="d-flex gap-2">
+        <p><a href="{% url 'aluno_edit' aluno.id %}" class="btn btn-primary">Editar</a></p>
+        <p><a href="{% url 'aluno_delete' aluno.id %}" class="btn btn-danger">Deletar</a></p>
+    </div>
+</main>
+{% endblock content %}

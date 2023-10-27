@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <a href="{% url 'index' %}">Pagina Inicial</a>
+    <h1>Novo Cadastro</h1>
+
+    <form action="{% url 'aluno_new' %}" method="post" class="d-flex flex-column">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" class="btn btn-primary mt-4">Salvar</button>
+    </form>
+</div>
+
+{% endblock content %}
